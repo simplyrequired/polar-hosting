@@ -1,32 +1,11 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const YTDL = require('ytdl-core');
-
-function Play(connection, message)
-{
-  var server = servers[message.guild.id];
-  servers.dipatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-  server.queue.shift();
-  server.dipatcher.on("end", function(){
-    if(server.queue[0])
-    {
-      Play(connection,message);
-    }
-    else
-    {
-      connection.disconnect();
-    }
-  })
-}
 
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setActivity(`with ya money`);
 });
-
-global.currentTeamMembers = [];
-global.servers = {};
 
 
 
@@ -44,7 +23,7 @@ if(message.author.bot) return;
     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
     message.channel.send("https://tenor.com/view/annoying-who-pinged-me-angry-gif-14512411");
   }
-  if(command === "Kly") {
+  if(command === "kly") {
     const m = await message.channel.send("GET DAFUQ OUT OF HERE");
     message.channel.send("https://cdn.discordapp.com/attachments/484917807910354944/616926390666919936/video0.mov");
   }
@@ -107,62 +86,6 @@ if(message.author.bot) return;
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
 
-  if(command === "play") {
-    if(message.member.voiceChannel){
-      {
-        if(!message.guild.voiceConnection)
-      {
-        if(!servers[message.guild.id])
-        {
-          servers[message.guild.id] = {queue: []}
-        }
-        message.member.voiceChannel.join()
-         .then(connection =>{
-           var server = servers[message.guild.id];
-           message.reply("Joined your voice channel!");
-           server.queue.push(args[0]);
-           Play(connection, message);
-         });
-      }
-    }
-  }
-    else
-    {
-      message.reply("join a voicechannel nub");
-    }
-  }
 
-
-if(command === "leave") {
-  if(message.guild.voiceConnection)
-  {
-    message.guild.voiceConnection.disconnect();
-  }
-  else
-  {
-    message.reply("Sorry im not in a voicechannel.")
-  }
-}
-if(command === "disconnect") {
-  if(message.guild.voiceConnection)
-  {
-    message.guild.voiceConnection.disconnect();
-  }
-  else
-  {
-    message.reply("Sorry im not in a voicechannel.")
-  }
-}
-if(command === "fuckoff") {
-  if(message.guild.voiceConnection)
-  {
-    message.guild.voiceConnection.disconnect();
-  }
-  else
-  {
-    message.reply("Sorry im not in a voicechannel.")
-  }
-}
-});
 
 client.login(process.env.BOT_TOKEN);
