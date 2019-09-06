@@ -6,8 +6,16 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setGame(`with ya money`);
 });
-
-
+client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'welcome');
+  if (!channel) return;
+  channel.send(`Welcome ${member} to ${guild.name}, Make sure to read the discord rules but...Have fun!`);
+});
+client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'server-logs');
+  if (!channel) return;
+  channel.send(`${member} Has connected to ${guild.name} - Connected IP: ERROR - Verified in SOU-Database: No`);
+});
 
 
 client.on("message", async message => {
