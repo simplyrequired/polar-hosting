@@ -1,19 +1,16 @@
 {
-  "name": "DisordBot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "SOUBot",
+  "description": "None really",
+  "version": "2.0.5",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "ffmpeg-binaries": "^4.0.0",
-    "opusscript": "0.0.7",
-    "youtube-search": "^1.1.4",
-    "ytdl-core": "^0.29.5"
+    "discord.js": "11.1.0",
+    "request": "2.81.0"
+
   }
+
 }
