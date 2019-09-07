@@ -107,5 +107,16 @@ if(message.author.bot) return;
     m.author.send('Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook')
     }
 });
-
+client.on('message', message => {
+  if (message.content === `${prefix}profile`) {
+    const embed = new RichEmbed()
+      .setTitle(`${message.author.username}'s Profile`)
+      .setColor(0xFFFFFF)
+      .setDescription('This system is still BETA.')
+      .addField('Author-ID', `${message.author.id}`, 'true')
+      .thumbnail(`${message.user.avatarURL}`)
+      .setfooter('Powerd by Simply_Studios')
+    message.channel.send(embed);
+  }
+});
 client.login(process.env.BOT_TOKEN);
