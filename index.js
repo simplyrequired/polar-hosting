@@ -98,7 +98,7 @@ if(message.author.bot) return;
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-  if(command === "recieve") {
+    if(command === "recieve") {
     if(!message.member.roles.some(r=>["[C] Commandant", "[D] Developer"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const m = await message.channel.send("Getting Discord API working..");
@@ -112,7 +112,6 @@ if(message.author.bot) return;
         .setDescription(`Hello ww2! This is the last updated script that Simply made for you.\n${attachment}`);
       m.author.send(embed);
     }
-  }
 });
 
 client.login(process.env.BOT_TOKEN);
