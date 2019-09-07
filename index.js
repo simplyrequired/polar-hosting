@@ -101,7 +101,7 @@ if(message.author.bot) return;
     const m = await message.channel.send("Getting Discord API working..");
     message.channel.send('Database has found 1 file.')
     message.channel.send('Sended file to your dm.')
-    message.author.send('Testing.')
+    message.author.send('https://www.roblox.com/library/3826714455/A-webhook')
   }
 });
 
