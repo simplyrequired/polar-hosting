@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const ff = require("f
 const client = new Discord.Client();
 const prefix = ';'
 
@@ -104,7 +105,7 @@ if(message.author.bot) return;
     const m = await message.channel.send("Getting Discord API working..");
     m.channel.send('Database has found 1 file.')
     m.channel.send('Sent file to your dm.')
-    m.author.send('Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook')
+    m.author.send('Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook');
     }
 });
 client.on('message', message => {
