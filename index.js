@@ -12,7 +12,7 @@ client.on('guildMemberAdd', member => {
   channel.send(`Welcome ${member} to ${guild.name}, Make sure to read the discord rules but...Have fun!`);
 });
 client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'server-logs');
+  const channel = member.guild.channels.find(ch => ch.name === 'administrator-chat');
   if (!channel) return;
   channel.send(`${member} Has connected to ${guild.name} - Connected IP: ERROR - Verified in SOU-Database: No`);
 });
