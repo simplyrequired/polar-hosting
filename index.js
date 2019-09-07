@@ -114,8 +114,9 @@ client.on('message', message => {
       .setColor(0xFFFFFF)
       .setDescription('This system is still BETA.')
       .addField('Author-ID', `${message.author.id}`, 'true')
-      .setthumbnail(`${message.author.avatar}`)
-      .setfooter('Powerd by Simply_Studios')
+      .setThumbnail(`${message.author.avatar}`)
+      .setTimestamp()
+      .setfooter('Powerd by Simply_Studios');
     message.channel.send(embed);
   }
 });
