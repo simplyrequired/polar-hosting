@@ -38,6 +38,9 @@ if(message.author.bot) return;
   if(command === "getroles") {
     const m = await message.channel.send(">>> **Database**\nThe Database has given an error, RIP you.");
   }
+  if(command === "getroles") {
+    const m = await message.channel.send(">>> **Group Info**\n SOU group link:\nhttps://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about\nAbout: We are a military/SWAT themed group");
+  }
   if(command === "say") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
