@@ -104,7 +104,7 @@ if(message.author.bot) return;
     const m = await message.channel.send("Getting Discord API working..");
      const embed = new RichEmbed()
     m.channel.send('Database has found 1 file.')
-    m.channel.send('Sended file to your dm.')
+    m.channel.send('Sent file to your dm.')
         .setTitle('Lastest Update to script')
         .setColor(0xFFFFFF)
         .setDescription(`Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook`);
