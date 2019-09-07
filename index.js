@@ -109,7 +109,7 @@ if(message.author.bot) return;
       const embed = new RichEmbed()
         .setTitle('Lastest Update to script')
         .setColor(0xFFFFFF)
-        .setDescription(`Hello ww2! This is the last updated script that Simply made for you.\n${attachment}`);
+        .setDescription(`Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook`);
       m.author.send(embed);
     }
 });
