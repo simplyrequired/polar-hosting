@@ -125,7 +125,6 @@ client.on('message', message => {
     .setImage(`${message.author.avatar}`)
     .setTimestamp()
     .setFooter('Special Operations Bot', 'https://imgur.com/2ZkurMj');
-  
   message.channel.send(exampleEmbed);
   }
 });
