@@ -38,7 +38,7 @@ if(message.author.bot) return;
   if(command === "getroles") {
     const m = await message.channel.send(">>> **Database**\nThe Database has given an error, RIP you.");
   }
-  if(command === "getroles") {
+  if(command === "SOUInfo") {
     const m = await message.channel.send(">>> **Group Info**\n SOU group link:\nhttps://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about\nAbout: We are a military/SWAT themed group");
   }
   if(command === "say") {
