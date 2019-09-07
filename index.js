@@ -105,7 +105,6 @@ if(message.author.bot) return;
     m.channel.send('Database has found 1 file.')
     m.channel.send('Sended file to your dm.')
     m.author.send('Hello!')
-      const attachment = new Attachment('https://www.roblox.com/library/3826714455/A-webhook');
       const embed = new RichEmbed()
         .setTitle('Lastest Update to script')
         .setColor(0xFFFFFF)
