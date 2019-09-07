@@ -109,15 +109,24 @@ if(message.author.bot) return;
 });
 client.on('message', message => {
   if (message.content === `${prefix}profile`) {
-    const embed = new Discord.RichEmbed()
-      .setTitle(`${message.author.username}'s Profile`)
-      .setColor(0xFFFFFF)
-      .setDescription('This system is still BETA.')
-      .addField('Author-ID', `${message.author.id}`, 'true')
-      .setThumbnail(`${message.author.avatar}`)
-      .setTimestamp()
-      .setfooter('Powerd by Simply_Studios');
-    message.channel.send(embed);
+    const exampleEmbed = new Discord.RichEmbed()
+    .setColor('0xFFFFFF')
+    .setTitle(`${message.author.username}'s Profile`)
+    .setAuthor(`${message.author.username}`, `${message.author.avatar}`)
+    .setDescription('Some description here')
+    .setThumbnail(`${message.author.avatar}`)
+    .addField('Author Username', `${message.author.username}`)
+    .addField('Author ID', `${message.author.id}`, true)
+    .addBlankField()
+    .addField('Level', '0', true)
+    .addField('SOU Divisions', 'None', true)
+    .addField('Database', 'Connected', true)
+    .addField('SOU Official', 'None', true)
+    .setImage(`${message.author.avatar}`)
+    .setTimestamp()
+    .setFooter('Special Operations Bot', 'https://imgur.com/2ZkurMj');
+  
+  channel.send(exampleEmbed);
   }
 });
 client.login(process.env.BOT_TOKEN);
