@@ -108,24 +108,27 @@ if(message.author.bot) return;
     }
 });
 client.on('message', message => {
-  if (message.content === `${prefix}profile`) {
-    message.channel.send('ok')
+  if (message.content === `;profile`) {
     const exampleEmbed = new Discord.RichEmbed()
     .setColor('0xFFFFFF')
     .setTitle(`${message.author.username}'s Profile`)
-    .setAuthor(`${message.author.username}`, `${message.author.avatar}`)
-    .setDescription('Some description here')
-    .setThumbnail(`${message.author.avatar}`)
+    .setAuthor(`${message.author.username}`, message.author.avatarURL)
+    .setDescription('This system is still beta ok?')
+    .setThumbnail(message.author.avatarURL)
     .addField('Author Username', `${message.author.username}`)
     .addField('Author ID', `${message.author.id}`, true)
+    .addField('Author Status', `${message.author.status}`, true)
+    .addField('Author Connection', 'Great', true)
     .addBlankField()
-    .addField('Level', '0', true)
-    .addField('SOU Divisions', 'None', true)
     .addField('Database', 'Connected', true)
-    .addField('SOU Official', 'None', true)
-    .setImage(`${message.author.avatar}`)
+    .addField('SOU Division Status', 'N/A', true)
+    .addField('SOU Official', 'N/A', true)
+    .addField('SOU Rank', 'N/A', true)
+    .addBlankField()
+    .addField('Information', 'This box is not used yet.', true)
+    .addField('Version', 'Beta 0.0.3', true)
     .setTimestamp()
-    .setFooter('Special Operations Bot', 'https://imgur.com/2ZkurMj');
+    .setFooter('Special Operations Bot',);
   message.channel.send(exampleEmbed);
   }
 });
