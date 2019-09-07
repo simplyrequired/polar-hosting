@@ -35,7 +35,9 @@ if(message.author.bot) return;
     const m = await message.channel.send("GET DAFUQ OUT OF HERE");
     message.channel.send("https://cdn.discordapp.com/attachments/484917807910354944/616926390666919936/video0.mov");
   }
-  
+  if(command === "!getroles") {
+    const m = await message.channel.send(">>> **Database**\nThe Database has given an error, RIP you.");
+  }
   if(command === "say") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
     return message.reply("Sorry, you don't have permissions to use this!");
