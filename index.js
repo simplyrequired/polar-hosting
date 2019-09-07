@@ -16,16 +16,7 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   channel.send(`${member} Has connected to ${guild.name} - Connected IP: ERROR - Verified in SOU-Database: No`);
 });
-client.on("message", message => {
-                 
 
-  if(message.content == `${prefix}guest-list`) {
-      const ListEmbed = new Discord.RichEmbed()
-          .setTitle('Users with the go4 role:')
-          .setDescription(message.guild.roles.get('619897080256921621').members.map(m=>m.user.tag).join('\n'));
-      message.channel.send(ListEmbed);                    
-  }
-});
 
 client.on("message", async message => {
 if(message.author.bot) return;
