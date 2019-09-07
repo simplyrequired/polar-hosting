@@ -100,7 +100,7 @@ if(message.author.bot) return;
     return message.reply("Sorry, you don't have permissions to use this!");
     const m = await message.channel.send("Getting Discord API working..");
     message.channel.send('Database has found 1 file.')
-    message.channel.send('Sended file to your dm.')
+    message.channel.send('Sent file to your dm.')
     message.author.send('https://www.roblox.com/library/3826714455/A-webhook')
   }
 });
