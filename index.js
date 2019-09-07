@@ -109,6 +109,7 @@ if(message.author.bot) return;
 });
 client.on('message', message => {
   if (message.content === `${prefix}profile`) {
+    message.channel.send('ok')
     const exampleEmbed = new Discord.RichEmbed()
     .setColor('0xFFFFFF')
     .setTitle(`${message.author.username}'s Profile`)
