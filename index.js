@@ -109,7 +109,7 @@ if(message.author.bot) return;
 });
 client.on('message', message => {
   if (message.content === `${prefix}profile`) {
-    const embed = new RichEmbed()
+    const embed = new Discord.RichEmbed()
       .setTitle(`${message.author.username}'s Profile`)
       .setColor(0xFFFFFF)
       .setDescription('This system is still BETA.')
