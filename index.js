@@ -97,7 +97,7 @@ if(message.author.bot) return;
   }
   if(command === "recieve") {
     if(!message.member.roles.some(r=>["[C] Commandant", "[D] Developer"].includes(r.name)) )
-    return message.reply("Sorry, you don't have permissions to use this!");
+    return message.reply("Sorry! you don't have permissions to use this!");
     const m = await message.channel.send("Getting Discord API working..");
     message.channel.send('Database has found 1 file.')
     message.channel.send('Sent file to your dm.')
