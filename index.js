@@ -126,7 +126,7 @@ client.on('message', message => {
     .setTimestamp()
     .setFooter('Special Operations Bot', 'https://imgur.com/2ZkurMj');
   
-  channel.send(exampleEmbed);
+  message.channel.send(exampleEmbed);
   }
 });
 client.login(process.env.BOT_TOKEN);
