@@ -109,7 +109,7 @@ if(message.author.bot) return;
 });
 client.on('message', message => {
   if (message.content === `;profile`) {
-    const exampleEmbed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
     .setColor('0xFFFFFF')
     .setTitle(`${message.author.username}'s Profile`)
     .setAuthor(`${message.author.username}`, message.author.avatarURL)
@@ -129,7 +129,7 @@ client.on('message', message => {
     .addField('Version', 'Beta 0.0.3', true)
     .setTimestamp()
     .setFooter('Special Operations Bot',);
-  message.channel.send(exampleEmbed);
+  message.channel.send(embed);
   }
 });
 client.login(process.env.BOT_TOKEN);
