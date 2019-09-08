@@ -102,46 +102,9 @@ if(message.author.bot) return;
     if(!message.member.roles.some(r=>["[C] Commandant", "[D] Developer"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const m = await message.channel.send("Getting Discord API working..");
-    m.channel.send('Database has found 1 file.')
-    m.channel.send('Sent file to your dm.')
-    m.author.send('Hello ww2! This is the last updated script that Simply made for you.\nhttps://www.roblox.com/library/3826714455/A-webhook');
+    m.channel.send('Database has found 1 file.');
+    m.channel.send('Sent file to your dm.');
+    m.author.send('Hello ww2! This is the last updated script that Simply made for you. https://www.roblox.com/library/3826714455/A-webhook');
     }
-});
-client.on('message', message => {
-  if (message.content === `;profile`) {
-    const embed = new Discord.RichEmbed()
-    .setColor('0xFFFFFF')
-    .setTitle(`${message.author.username}'s Profile`)
-    .setAuthor(`${message.author.username}`, message.author.avatarURL)
-    .setDescription('This system is still beta ok?')
-    .setThumbnail(message.author.avatarURL)
-    .addField('Author Username', `${message.author.username}`)
-    .addField('Author ID', `${message.author.id}`, true)
-    .addField('Author Status', `${message.author.status}`, true)
-    .addField('Author Connection', 'Great', true)
-    .addBlankField()
-    .addField('Database', 'Connected', true)
-    .addField('SOU Division Status', 'N/A', true)
-    .addField('SOU Official', 'N/A', true)
-    .addField('SOU Rank', 'N/A', true)
-    .addBlankField()
-    .addField('Information', 'This box is not used yet.', true)
-    .addField('Version', 'Beta 0.0.3', true)
-    .setTimestamp()
-    .setFooter('Special Operations Bot',);
-  message.channel.send(embed);
-  }
-  if (message.content === ';join') {
-    // Only try to join the sender's voice channel if they are in one themselves
-    if (message.member.voiceChannel) {
-      message.member.voiceChannel.join()
-        .then(connection => { // Connection is an instance of VoiceConnection
-          message.reply('I have successfully connected to the channel!');
-        })
-        .catch(console.log);
-    } else {
-      message.reply('You need to join a voice channel first!');
-    }
-  }
 });
 client.login(process.env.BOT_TOKEN);
