@@ -66,7 +66,7 @@ if(message.author.bot) return;
   }
   
   if(command === "ban") {
-    if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
