@@ -4,18 +4,10 @@ const prefix = ';'
 
 client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setGame(`with ya money`);
+  client.user.setGame(`Being edited in studio`);
+  client.user.setStatus('idle')
 });
-client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'welcome');
-  if (!channel) return;
-  channel.send(`Welcome ${member} to ${guild.name}, Make sure to read the discord rules but...Have fun!`);
-});
-client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'administrator-chat');
-  if (!channel) return;
-  channel.send(`${member} Has connected to ${guild.name} - Connected IP: ERROR - Verified in SOU-Database: No`);
-});
+
 
 
 client.on("message", async message => {
@@ -36,14 +28,14 @@ if(message.author.bot) return;
     message.channel.send("https://cdn.discordapp.com/attachments/484917807910354944/616926390666919936/video0.mov");
   }
   if(command === "getroles") {
-    const m = await message.channel.send(">>> **Database**\nThe Database has given an error, RIP you.");
+    const m = await message.channel.send(">>> **Database**\n Roles updated!");
   }
   if(command === "souinfo") {
     const m = await message.channel.send(">>> **Group Info**\n SOU group link:\nhttps://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about\nAbout: We are a military/SWAT themed group");
   }
   if(command === "say") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
-    return message.reply("Sorry, you don't have permissions to use this!");
+    return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
@@ -51,7 +43,7 @@ if(message.author.bot) return;
   
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
+      return message.reply("Sorry! you don't have permissions to use this!");
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
       return message.reply("Please mention a valid member of this server");
@@ -67,7 +59,7 @@ if(message.author.bot) return;
   
   if(command === "ban") {
     if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
-      return message.reply("Sorry, you don't have permissions to use this!");
+      return message.reply("Sorry! you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
     if(!member)
@@ -98,13 +90,6 @@ if(message.author.bot) return;
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
-    if(command === "recieve") {
-    if(!message.member.roles.some(r=>["[C] Commandant", "[D] Developer"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const m = await message.channel.send("Getting Discord API working..");
-    m.channel.send('Database has found 1 file.');
-    m.channel.send('Sent file to your dm.');
-    m.author.send('Hello ww2! This is the last updated script that Simply made for you. https://www.roblox.com/library/3826714455/A-webhook');
-    }
 });
+
 client.login(process.env.BOT_TOKEN);
