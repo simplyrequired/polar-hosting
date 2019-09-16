@@ -118,7 +118,7 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
-         channel.send(`Username: ${message.author.username}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
 
   }
     if(command === "s") {
@@ -128,7 +128,7 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
-         channel.send(`Username: ${message.author.username}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
 
   }
     if(command === "suggestion") {
@@ -138,7 +138,7 @@ client.on("message", async message => {
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
-         channel.send(`Username: ${message.author.username}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
 
   }
 });
