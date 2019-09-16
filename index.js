@@ -50,6 +50,24 @@ if(message.author.bot) return;
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
   }
+    if(command === "s") {
+    if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
+    return message.reply("Sorry! you don't have permissions to use this!");
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+  }
+    if(command === "suggestion") {
+    if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
+    return message.reply("Sorry! you don't have permissions to use this!");
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+  }
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
       return message.reply("Sorry! you don't have permissions to use this!");
