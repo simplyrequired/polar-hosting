@@ -42,31 +42,37 @@ if(message.author.bot) return;
     message.channel.send(sayMessage);
   }
   if(command === "suggest") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "[G] Guest"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+       message.react('👍');
+       message.react('👎');
   }
     if(command === "s") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "[G] Guest"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+             message.react('👍');
+       message.react('👎');
   }
     if(command === "suggestion") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "[G] Guest"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+             message.react('👍');
+       message.react('👎');
   }
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
