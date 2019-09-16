@@ -41,39 +41,6 @@ if(message.author.bot) return;
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
-  if(command === "suggest") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel1 = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel1) return;
-         channel1.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-       message.channel1.react('👍');
-       message.channel1.react('👎');
-  }
-    if(command === "s") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel) return;
-         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             channel.react('👍');
-       channel.react('👎');
-  }
-    if(command === "suggestion") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel) return;
-         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             channel.react('👍');
-       channel.react('👎');
-  }
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
       return message.reply("Sorry! you don't have permissions to use this!");
@@ -149,33 +116,30 @@ client.on("message", async message => {
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    const channel1 = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel1) return;
-         channel1.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-       message.channel1.react('👍');
-       message.channel1.react('👎');
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+
   }
     if(command === "s") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    const channel1 = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel1) return;
-         channel1.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             message.channel1react('👍');
-       message.channel1react('👎');
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+
   }
     if(command === "suggestion") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    const channel1 = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel1) return;
-         channel1.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             message.channel1.react('👍');
-       message.channel1react('👎');
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+
   }
 });
 client.login(process.env.BOT_TOKEN);
