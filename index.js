@@ -28,7 +28,8 @@ if(message.author.bot) return;
     message.channel.send("https://cdn.discordapp.com/attachments/484917807910354944/616926390666919936/video0.mov");
   }
   if(command === "getroles") {
-    const m = await message.channel.send(">>> **Database**\n Roles updated!");
+    message.react('👍')
+    const m = await message.channel.send(`>>> **Database**\nCurrent Roles:\n${message.author.roles}\nDo you want to update your roles?`);
   }
   if(command === "souinfo") {
     const m = await message.channel.send(">>> **Group Info**\n SOU group link:\nhttps://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about\nAbout: We are a military/SWAT themed group");
@@ -40,7 +41,14 @@ if(message.author.bot) return;
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
-  
+  if(command === "suggest") {
+    if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
+    return message.reply("Sorry! you don't have permissions to use this!");
+    const sayMessage = args.join(" ");
+    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
+  if (!channel) return;
+         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
+  }
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
       return message.reply("Sorry! you don't have permissions to use this!");
@@ -90,6 +98,20 @@ if(message.author.bot) return;
     message.channel.bulkDelete(fetched)
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 client.login(process.env.BOT_TOKEN);
