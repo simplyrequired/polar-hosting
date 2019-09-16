@@ -49,8 +49,8 @@ if(message.author.bot) return;
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-       message.react('👍');
-       message.react('👎');
+       channel.react('👍');
+       channel.react('👎');
   }
     if(command === "s") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
@@ -60,8 +60,8 @@ if(message.author.bot) return;
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             message.react('👍');
-       message.react('👎');
+             channel.react('👍');
+       channel.react('👎');
   }
     if(command === "suggestion") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
@@ -71,8 +71,8 @@ if(message.author.bot) return;
     const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
   if (!channel) return;
          channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-             message.react('👍');
-       message.react('👎');
+             channel.react('👍');
+       channel.react('👎');
   }
   if(command === "kick") {
     if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
