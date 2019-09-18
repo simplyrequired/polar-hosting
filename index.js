@@ -248,39 +248,39 @@ Client.on("message", async message => {
     const command = args.shift().toLowerCase();
 
   // - Ban User - \\
-if(command === "ban") {
-  if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
-    return message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${ServerOwner} only. Are you HR+?\nAsk to update your roles.`);
-  
-  let member = message.mentions.members.first();
-  if(!member)
-    return message.channel.send('Please provide the user-tag.');
-  if(!member.bannable) 
-    return message.channel.send(`I cannot ban ${member.user.tag}, It may be cause of my permissions? Or is his role higher then me?`);
+  if(command === "kick") {
+    if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
+      return message.reply("Sorry! you don't have permissions to use this!");
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member)
+      return message.reply("Please mention a valid member of this server");
+    if(!member.kickable) 
+      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+    await member.kick(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
-  let reason = args.slice(1).join(' ');
-  if(!reason) reason = "No reason provided";
+  }
   
-  await member.ban(reason)
-    .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-  message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-}
-  // - Kick User - \\
-if(command === "kick") {
-  if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
-  message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${DevRole} and ${ServerOwner}only. Are you HR+?\nAsk to update your roles.`);
-  let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-  if(!member)
-    return message.reply("Please mention a valid member of this server");
-  if(!member.kickable) 
-  return message.channel.send(`I cannot kick ${member.user.tag}, It may be cause of my permissions? Or is his role higher then me?`);
-  let reason = args.slice(1).join(' ');
-  if(!reason) reason = "No reason provided";
-  await member.kick(reason)
-    .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-  message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+  if(command === "ban") {
+    if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
+      return message.reply("Sorry! you don't have permissions to use this!");
+    
+    let member = message.mentions.members.first();
+    if(!member)
+      return message.reply("Please mention a valid member of this server");
+    if(!member.bannable) 
+      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
-}
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+    
+    await member.ban(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+  }
   // - Purge message - \\
 if(command === "purge") {
   const deleteCount = parseInt(args[0], 10);
