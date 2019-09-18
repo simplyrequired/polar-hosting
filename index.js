@@ -9,7 +9,7 @@ const Prefix = ';';
 
 Client.on("ready", () => {
   console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`); 
-  Client.user.setStatus('dnd')
+  Client.user.setStatus('online')
   Client.user.setUsername('Special Operations Bot')
 });
 
