@@ -1,150 +1,254 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
-const prefix = ';'
+const Client = new Discord.Client();
+const Creator = "Simply_Required";
+const CreatorRole = "[BC] Bot Creator";
+const ServerOwner = `ww2kidStudios`
+const HRRole = "[H] Highranks";
+const DevRole = "[DT] Development Team";
+const Prefix = ';';
 
-client.on("ready", () => {
-  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
-  client.user.setGame(`Being edited in studio`);
-  client.user.setStatus('idle')
+Client.on("ready", () => {
+  console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`); 
+  Client.user.setActivity(`Being edited in studio`);
+  Client.user.setStatus('dnd')
+  Client.user.setUsername('Special Operations Bot')
 });
 
 
-
-client.on("message", async message => {
+// - Normal easy Commands - \\
+Client.on("message", async message => {
 if(message.author.bot) return;
-  if(message.content.indexOf(prefix) !== 0) return;
-  
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  if(message.content.indexOf(Prefix) !== 0) return;
+  const args = message.content.slice(Prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   
-  if(command === "ping") {
+  // - Welcome Command - \\
+  Client.on('guildMemberAdd', member => {
+    member.send('>>> Hey! Welcome to this server, First of if you are new read the channel. DISCORD-RULES there you will find the current discord rules\n for our community server. Not new? Know the rules? The have fun and send a message in GENRAL, Play around and make friends\n Dont have friends? Rip....')
+  });
 
+  Client.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(ch => ch.name === 'general');
+    if (!channel) return;
+    channel.send(`Hey ${member}! Welcome to the server 😍`);
+  });
+
+ // - Creator Command - \\
+ if(command === "creator") {
+  const m = await message.channel.send(`My creator/owner is: ${Creator}.`);
+}
+
+
+
+ // - Help Command - \\
+ if(command === "help") {
+  const m = await message.channel.send("Need help?");
+  m.edit(`>>> **Help?**\nWelcome to the help-page, here are all current commands that I have..Some may not work or some are not listed so..sorry\n**Ping?**\nShows current bot ping.\n**help**\nWell..This command\n**Creator**\nAn command that shows the creator.`);
+}
+
+
+  // - Ping Command - \\
+  if(command === "ping") {
     const m = await message.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-    message.channel.send("https://tenor.com/view/annoying-who-pinged-me-angry-gif-14512411");
+    m.edit(`>>> **Pong!**\n⏱${m.createdTimestamp - message.createdTimestamp}ms\n❤️ ${Math.round(Client.ping)}ms`);
   }
-  if(command === "kly") {
-    const m = await message.channel.send("GET DAFUQ OUT OF HERE");
-    message.channel.send("https://cdn.discordapp.com/attachments/484917807910354944/616926390666919936/video0.mov");
+});
+
+// - Permissions needed+ Commands - \\
+Client.on("message", async message => {
+  if(message.author.bot) return;
+    if(message.content.indexOf(Prefix) !== 0) return;
+    const args = message.content.slice(Prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+
+  // - HR-Annouce Command - \\
+if(command === "hr-announce") {
+  if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+  return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+  const sayMessage = args.join(" ");
+  message.delete().catch(O_o=>{}); 
+  message.channel.send('Succesfully announced!')
+  const channel = message.guild.channels.find(ch => ch.name === 'hr-announcements');
+  if (!channel) message.channel.send('I could not find the channel!');
+       channel.send(sayMessage);
+
+}
+
+  // - Annouce Command - \\
+  if(command === "announce") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send('Succesfully announced!')
+    const channel = message.guild.channels.find(ch => ch.name === 'announcements');
+  if (!channel) message.channel.send('I could not find the channel!');
+         channel.send(sayMessage);
+  
   }
-  if(command === "getroles") {
-    message.react('👍')
-    const m = await message.channel.send(`>>> **Database**\nCurrent Roles:\n${message.author.roles}\nDo you want to update your roles?`);
-  }
-  if(command === "souinfo") {
-    const m = await message.channel.send(">>> **Group Info**\n SOU group link:\nhttps://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about\nAbout: We are a military/SWAT themed group");
-  }
+  // - An Usefull trollling command- \\
   if(command === "say") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "[D] Developer"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${DevRole}`].includes(r.name)) )
+    return message.reply("Ok...");
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
-  if(command === "kick") {
-    if(!message.member.roles.some(r=>["Bot adminstrator", "[D] Developer"].includes(r.name)) )
-      return message.reply("Sorry! you don't have permissions to use this!");
-    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if(!member)
-      return message.reply("Please mention a valid member of this server");
-    if(!member.kickable) 
-      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-    let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason provided";
-    await member.kick(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
+
+});
+// - Divisions and information Commands - \\
+Client.on("message", async message => {
+  if(message.author.bot) return;
+    if(message.content.indexOf(Prefix) !== 0) return;
+    const args = message.content.slice(Prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+  // - SOUConfig- \\
+const SOUGroup = "[SOU] Special Operations Unit®"
+const SOUGroupLink = "https://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about"
+const SOUGroupDesc = "We are a military/SWAT themed group"
+const SOUGroupOwner = "ww2kidStudios"
+
+  // - CPTConfig- \\
+  const CPTGroup = "[SOU] Commandant Protection Team"
+  const CPTGroupLink = "https://www.roblox.com/groups/4804783/SOU-Commandant-Protection-Team#!/about"
+  const CPTGroupDesc = "None"
+  const CPTGroupOwner = "ww2kidStudios"
+
+  // - MRUConfig- \\
+  const MRUGroup = "[SOU] Medical Response Unit"
+  const MRUGroupLink = "https://www.roblox.com/groups/4959159/SOU-Medical-Response-Unit#!/about"
+  const MRUGroupDesc = "None"
+  const MRUGroupOwner = "NewNullthemaster1234"
+
+  // - TPUConfig- \\
+  const TPUGroup = "[SOU] Tactical Protection Unit"
+  const TPUGroupLink = "https://www.roblox.com/groups/5077868/SOU-Tactical-Protection-Unit#!/about"
+  const TPUGroupDesc = "None"
+  const TPUGroupOwner = "SilentGhosty"
+
+  // - IAConfig- \\
+  const IAGroup = "[SOU] Intelligence Agency"
+  const IAGroupLink = "https://www.roblox.com/groups/4821426/SOU-Intelligence-Agency#!/about"
+  const IAGroupDesc = "Sending requests to join the group or asking for it will result in a blacklist without excuses."
+  const IAGroupOwner = "[DATA EXPUNGED]"
+
+  // - BPConfig- \\
+  const BPGroup = "[SOU] Base Police"
+  const BPGroupLink = "https://www.roblox.com/groups/4782324/SOU-Base-Police#!/about"
+  const BPGroupDesc = "None"
+  const BPGroupOwner = "Kly_zo"
+
+  // - ESATConfig- \\
+  const ESATGroup = "[E-S-A-T] Elite Stealth Analysis Team"
+  const ESATGroupLink = "https://www.roblox.com/groups/4555118/E-S-A-T-Elite-Stealth-Analysis-Team#!/about"
+  const ESATGroupDesc = "We are division of the SOU."
+  const ESATGroupOwner = "Page cannot be found or no longer exists"
+
+  if(command === "divisions") {
+    const m = await message.channel.send("Alright.");
+    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
   }
+
+  if(command === "divs") {
+    const m = await message.channel.send("Alright.");
+    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${ESATGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${BPGroup}`);
+  }
+    if(command === "sou") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${SOUGroup}**\n${SOUGroupDesc}\nOwned by: ${SOUGroupOwner}\nLink: ${SOUGroupLink}`);
+    }
+
+    if(command === "cpt") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${CPTGroup}**\n${CPTGroupDesc}\nOwned by: ${CPTGroupOwner}\nLink: ${CPTGroupLink}`);
+    }
+
+    if(command === "bp") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${BPGroup}**\n${BPGroupDesc}\nOwned by: ${BPGroupOwner}\nLink: ${BPGroupLink}`);
+    }
+
+    if(command === "esat") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${ESATGroup}**\n${ESATGroupDesc}\nOwned by: ${ESATGroupOwner}\nLink: ${ESATGroupLink}`);
+    }
+
+    if(command === "mru") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${MRUGroup}**\n${MRUGroupDesc}\nOwned by: ${MRUGroupOwner}\nLink: ${MRUGroupLink}`);
+    }
+
+    if(command === "ia") {
+      const m = await message.channel.send("Alright.!");
+      m.channel.send(`>>> **${IAGroup}**\n${IAGroupDesc}\nOwned by: ${IAGroupOwner}\nLink: ${IAGroupLink}`);
+    }
+    if(command === "tpu") {
+      const m = await message.channel.send("Alright.");
+      m.channel.send(`>>> **${TPUGroup}**\n${TPUGroupDesc}\nOwned by: ${TPUGroupOwner}\nLink: ${TPUGroupLink}`);
+    }
+});
+
+// - Adminstrative Commands - \\
+Client.on("message", async message => {
+  if(message.author.bot) return;
+    if(message.content.indexOf(Prefix) !== 0) return;
+    const args = message.content.slice(Prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+
+if(command === "ban") {
+  if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${ServerOwner} only. Are you HR+?\nAsk to update your roles.`);
   
-  if(command === "ban") {
-    if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
-      return message.reply("Sorry! you don't have permissions to use this!");
-    
-    let member = message.mentions.members.first();
-    if(!member)
-      return message.reply("Please mention a valid member of this server");
-    if(!member.bannable) 
-      return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+  let member = message.mentions.members.first();
+  if(!member)
+    return message.channel.send('Please provide the user-tag.');
+  if(!member.bannable) 
+    return message.channel.send(`I cannot ban ${member.user.tag}, It may be cause of my permissions? Or is his role higher then me?`);
 
-    let reason = args.slice(1).join(' ');
-    if(!reason) reason = "No reason provided";
-    
-    await member.ban(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-    message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
-  }
+  let reason = args.slice(1).join(' ');
+  if(!reason) reason = "No reason provided";
   
-  if(command === "purge") {
-    // This command removes all messages from all users in the channel, up to 100.
-    
-    // get the delete count, as an actual number.
-    const deleteCount = parseInt(args[0], 10);
-    
-    // Ooooh nice, combined conditions. <3
-    if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-      return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
-    
-    // So we get our messages, and delete them. Simple enough, right?
-    const fetched = await message.channel.fetchMessages({limit: deleteCount});
-    message.channel.bulkDelete(fetched)
-      .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
-  }
+  await member.ban(reason)
+    .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+  message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+}
 
+if(command === "kick") {
+  if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`, `${DevRole}`].includes(r.name)) )
+  message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${DevRole} and ${ServerOwner}only. Are you HR+?\nAsk to update your roles.`);
+  let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+  if(!member)
+    return message.reply("Please mention a valid member of this server");
+  if(!member.kickable) 
+  return message.channel.send(`I cannot kick ${member.user.tag}, It may be cause of my permissions? Or is his role higher then me?`);
+  let reason = args.slice(1).join(' ');
+  if(!reason) reason = "No reason provided";
+  await member.kick(reason)
+    .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+  message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
+}
 
+if(command === "purge") {
+  const deleteCount = parseInt(args[0], 10);
 
-
-
-
-
-
-
+  if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+    return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+  
+  const fetched = await message.channel.fetchMessages({limit: deleteCount});
+  message.channel.bulkDelete(fetched)
+    .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+}
 
 
 
 
 });
-// Suggestions - Others
-client.on("message", async message => {
-  if(message.content.indexOf(prefix) !== 0) return;
-  
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
 
- if(command === "tempban-omq") {
-    const m = await message.channel.send(`User has been banned by: ${message.author} from: ${message.guild.name} for: ur moms gay hah sike ok bye.`);
-    m.react('👍')
-  }
-    if(command === "suggest") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel) return;
-         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
 
-  }
-    if(command === "s") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel) return;
-         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-
-  }
-    if(command === "suggestion") {
-    if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
-    return message.reply("Sorry! you don't have permissions to use this!");
-    const sayMessage = args.join(" ");
-    message.delete().catch(O_o=>{}); 
-    const channel = message.guild.channels.find(ch => ch.name === 'suggestions');
-  if (!channel) return;
-         channel.send(`Username: ${message.author}\nRank: Unknown(soz)\nSuggestion: ` + sayMessage);
-
-  }
-});
-client.login(process.env.BOT_TOKEN);
+// - Client Login - \\
+Client.login(process.env.BOT_TOKEN);
