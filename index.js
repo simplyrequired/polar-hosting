@@ -239,7 +239,7 @@ Client.on("message", async message => {
 
   // - Ban User - \\
 if(command === "ban") {
-  if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`].includes(r.name)) )
+  if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
     return message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${ServerOwner} only. Are you HR+?\nAsk to update your roles.`);
   
   let member = message.mentions.members.first();
@@ -257,7 +257,7 @@ if(command === "ban") {
 }
   // - Kick User - \\
 if(command === "kick") {
-  if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`, `${DevRole}`].includes(r.name)) )
+  if(!message.member.roles.some(r=>["[D] Developer"].includes(r.name)) )
   message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${DevRole} and ${ServerOwner}only. Are you HR+?\nAsk to update your roles.`);
   let member = message.mentions.members.first() || message.guild.members.get(args[0]);
   if(!member)
