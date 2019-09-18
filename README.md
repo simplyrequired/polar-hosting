@@ -1,2 +1,2 @@
 # sou-hosting
-none
+Current Hosting script for = SOU discord bot.
