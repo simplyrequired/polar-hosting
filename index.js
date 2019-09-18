@@ -153,7 +153,11 @@ const SOUGroupOwner = "ww2kidStudios"
 
   if(command === "divs") {
     const m = await message.channel.send("Alright.");
-    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${ESATGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${BPGroup}`);
+    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
+  }
+    if(command === "div") {
+    const m = await message.channel.send("Alright.");
+    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
   }
     if(command === "sou") {
       const m = await message.channel.send("Alright.");
