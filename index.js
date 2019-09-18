@@ -113,14 +113,9 @@ client.on("message", async message => {
   const command = args.shift().toLowerCase();
 
  if(command === "tempban omq") {
-    message.react('👍')
     const m = await message.channel.send(`User has been banned by: ${message.author} from: {message.guild.name} for: ur moms gay hah sike ok bye.`);
+    m.react('👍')
   }
-
-
-
-
-
     if(command === "suggest") {
     if(!message.member.roles.some(r=>["[DT] Development Team", "Verified"].includes(r.name)) )
     return message.reply("Sorry! you don't have permissions to use this!");
