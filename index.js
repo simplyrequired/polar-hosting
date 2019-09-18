@@ -132,6 +132,17 @@ if(command === "hr-announce") {
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
+  
+   if(command === "messagefromsimply") {
+    return message.reply("Ok...");
+    message.channel.send("This message is send from Simply_Required, I know the reason that I cant join the server...Me and com are fixing this\nDon't blame BEST FOR THIS. It's my own fault and now leave it ok bye cya later nubs.");
+  }
+  
+  
+  
+  
+  
+  
 });
 // - Divisions and information Commands - \\
 Client.on("message", async message => {
