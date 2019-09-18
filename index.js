@@ -34,7 +34,7 @@ const ServerName = 'Special Operations Unit'
 // - Commando Settings - \\
 Client.on("ready", () => {
   console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`);
-  console.log(`Logged in as: ${Client.user.username} BotID: ${Client.user.id}`)
+  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
   console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
   Client.user.setStatus(Status)
   Client.user.setUsername(Username)
@@ -69,9 +69,14 @@ if(message.author.bot) return;
  // - Help Command - \\
  if(command === "help") {
   const m = await message.channel.send("Need help?");
-  m.edit(`>>> **Help?**\nWelcome to the help-page, here are all current commands that I have..Some may not work or some are not listed so..sorry\n**Ping?**\nShows current bot ping.\n**help**\nWell..This command\n**Creator**\nAn command that shows the creator.\n**hr-announce**\nWill announce a message to all HR's\n**announce**\nWill send a message to the announcements channel\n**say**\na random command\n**talk**\nanother random command\n**divisions**\n typ NOT IN CAPS. your division name like: cpt,mru...etc\n**kick**\nKicks a user\n**ban**\nbans a user\n**purge**\ndeleted messages`)
+  m.edit(`>>> **Command List**\nWelcome to the help-page. Here are all commands listed.\n \n **For everyone**\n \n**${Prefix}help**\n This command gives you a list of all commands.\n**${Prefix}cmds**\nSame as above but with another name for the lazy people.\n**${Prefix}creator**\nThis command gives you information about the creator.\n \n**HR+**\n \n**${Prefix}announce**\nThis command lets you announce to the whole server.\n**${Prefix}hr-announce**\nThis command let's you notify HR's.\n \n**Adminstrative**\n \n**${Prefix}kick**\nKicks the tagged user\n**${Prefix}ban**\nBans the tagged user\n**${Prefix}purge**\nDeletes the amount of messages that is putted in.\n \n **Fun \n \n**${Prefix}say**Makes the bot say something\n**${Prefix}talk**Makes the bot say something`)
 }
 
+ // - Commands Command - \\
+ if(command === "cmds") {
+  const m = await message.channel.send("Need help?");
+  m.edit(`>>> **Command List**\nWelcome to the help-page. Here are all commands listed.\n \n **For everyone**\n \n**${Prefix}help**\n This command gives you a list of all commands.\n**${Prefix}cmds**\nSame as above but with another name for the lazy people.\n**${Prefix}creator**\nThis command gives you information about the creator.\n \n**HR+**\n \n**${Prefix}announce**\nThis command lets you announce to the whole server.\n**${Prefix}hr-announce**\nThis command let's you notify HR's.\n \n**Adminstrative**\n \n**${Prefix}kick**\nKicks the tagged user\n**${Prefix}ban**\nBans the tagged user\n**${Prefix}purge**\nDeletes the amount of messages that is putted in.\n \n **Fun \n \n**${Prefix}say**Makes the bot say something\n**${Prefix}talk**Makes the bot say something`)
+}
 
   // - Ping Command - \\
   if(command === "ping") {
