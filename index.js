@@ -34,7 +34,7 @@ const ServerName = 'Special Operations Unit'
 // - Commando Settings - \\
 Client.on("ready", () => {
   console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`);
-  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
+  console.log(`Logged in as: ${Client.user.username} BotID: ${Client.user.id}`)
   console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
   Client.user.setStatus(Status)
   Client.user.setUsername(Username)
@@ -69,7 +69,7 @@ if(message.author.bot) return;
  // - Help Command - \\
  if(command === "help") {
   const m = await message.channel.send("Need help?");
-  m.edit(`>>> **Help?**\nWelcome to the help-page, here are all current commands that I have..Some may not work or some are not listed so..sorry\n**Ping?**\nShows current bot ping.\n**help**\nWell..This command\n**Creator**\nAn command that shows the creator.`);
+  m.edit(`>>> **Help?**\nWelcome to the help-page, here are all current commands that I have..Some may not work or some are not listed so..sorry\n**Ping?**\nShows current bot ping.\n**help**\nWell..This command\n**Creator**\nAn command that shows the creator.\n**hr-announce**\nWill announce a message to all HR's\n**announce**\nWill send a message to the announcements channel\n**say**\na random command\n**talk**\nanother random command\n**divisions**\n typ NOT IN CAPS. your division name like: cpt,mru...etc\n**kick**\nKicks a user\n**ban**\nbans a user\n**purge**\ndeleted messages`)
 }
 
 
