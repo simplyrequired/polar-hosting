@@ -94,8 +94,13 @@ if(command === "hr-announce") {
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
-
-
+  if(command === "talk") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.reply("Ok...");
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send(sayMessage);
+  }
 });
 // - Divisions and information Commands - \\
 Client.on("message", async message => {
