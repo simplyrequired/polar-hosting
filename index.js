@@ -1,16 +1,44 @@
+
+// - Discord Packages - \\
 const Discord = require("discord.js");
 const Client = new Discord.Client();
-const Creator = "Simply_Required";
+
+
+
+// - Bot settings - \\
+const Prefix = ';';
+const Status = 'Online';
+const Username = 'Special operations Bot'
+
+
+// - Role Config - \\
 const CreatorRole = "[BC] Bot Creator";
-const ServerOwner = `ww2kidStudios`
+const ServerOwnerRole = "[C] Commandant";
+
 const HRRole = "[H] Highranks";
 const DevRole = "[DT] Development Team";
-const Prefix = ';';
+const Nitro = "Discord Nitro Booster";
 
+
+// - Creator Config - \\
+const Creator = 'Simply_Required';
+const ServerOwner = 'ww2kidStudios';
+
+
+// - Server Settings - \\
+const ServerPermLink = 'https://discord.gg/FjMbvQE';
+const ServerName = 'Special Operations Bot'
+const ServerSize = `${Client.users.size}`
+const ServerChannels = `${Client.channels.size}`
+
+
+// - Commando Settings - \\
 Client.on("ready", () => {
-  console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`); 
-  Client.user.setStatus('online')
-  Client.user.setUsername('Special Operations Bot')
+  console.log(`Bot has started, with ${ServerSize} users, in ${ServerChannels} channels of ${Client.guilds.size} guilds.`);
+  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
+  console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
+  Client.user.setStatus(Status)
+  Client.user.setUsername(Username)
 });
 
 
@@ -206,7 +234,7 @@ Client.on("message", async message => {
     const args = message.content.slice(Prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-
+  // - Ban User - \\
 if(command === "ban") {
   if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`].includes(r.name)) )
     return message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${ServerOwner} only. Are you HR+?\nAsk to update your roles.`);
@@ -224,7 +252,7 @@ if(command === "ban") {
     .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
   message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
 }
-
+  // - Kick User - \\
 if(command === "kick") {
   if(!message.member.roles.some(r=>[`${ServerOwner}`, `${CreatorRole}`, `${DevRole}`].includes(r.name)) )
   message.channel.send(`Hey! ${message.author}, This command is only for ${CreatorRole} & ${DevRole} and ${ServerOwner}only. Are you HR+?\nAsk to update your roles.`);
@@ -240,7 +268,7 @@ if(command === "kick") {
   message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
 }
-
+  // - Purge message - \\
 if(command === "purge") {
   const deleteCount = parseInt(args[0], 10);
 
@@ -252,10 +280,12 @@ if(command === "purge") {
     .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
 }
 
-
-
-
 });
+
+// - Creator & Server owner Only Private Commands - \\
+
+
+
 
 
 // - Client Login - \\
