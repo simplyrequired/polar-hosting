@@ -8,7 +8,7 @@ const Client = new Discord.Client();
 // - Bot settings - \\
 const Prefix = ';';
 const Status = 'Online';
-const Username = 'Special operations Bot'
+const Username = 'Special operations Unit'
 
 
 // - Role Config - \\
