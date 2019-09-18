@@ -8,7 +8,7 @@ const Client = new Discord.Client();
 // - Bot settings - \\
 const Prefix = ';';
 const Status = 'Online';
-const Username = 'Special operations Unit'
+const Username = 'Special operations Bot'
 
 
 // - Role Config - \\
@@ -27,15 +27,14 @@ const ServerOwner = 'ww2kidStudios';
 
 // - Server Settings - \\
 const ServerPermLink = 'https://discord.gg/FjMbvQE';
-const ServerName = 'Special Operations Bot'
-const ServerSize = `${Client.users.size}`
-const ServerChannels = `${Client.channels.size}`
+const ServerName = 'Special Operations Unit'
+
 
 
 // - Commando Settings - \\
 Client.on("ready", () => {
-  console.log(`Bot has started, with ${ServerSize} users, in ${ServerChannels} channels of ${Client.guilds.size} guilds.`);
-  console.log(`Logged in as: ${Client.user.username} BotID: ${Client.user.id}`)
+  console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`);
+  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
   console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
   Client.user.setStatus(Status)
   Client.user.setUsername(Username)
