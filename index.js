@@ -112,7 +112,7 @@ client.on("message", async message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
- if(command === "ban omq") {
+ if(command === "tempban omq") {
     message.react('👍')
     const m = await message.channel.send(`User has been banned by: ${message.author} from: {message.guild.name} for: ur moms gay hah sike ok bye.`);
   }
