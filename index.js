@@ -35,7 +35,7 @@ const ServerChannels = `${Client.channels.size}`
 // - Commando Settings - \\
 Client.on("ready", () => {
   console.log(`Bot has started, with ${ServerSize} users, in ${ServerChannels} channels of ${Client.guilds.size} guilds.`);
-  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
+  console.log(`Logged in as: ${Client.user.username} BotID: ${Client.user.id}`)
   console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
   Client.user.setStatus(Status)
   Client.user.setUsername(Username)
