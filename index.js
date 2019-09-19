@@ -48,15 +48,7 @@ if(message.author.bot) return;
   const command = args.shift().toLowerCase();
   
   // - Welcome Command - \\
-  Client.on('guildMemberAdd', member => {
-    member.send('>>> Hey! Welcome to this server, First of if you are new read the channel. DISCORD-RULES there you will find the current discord rules\n for our community server. Not new? Know the rules? The have fun and send a message in GENRAL, Play around and make friends\n Dont have friends? Rip....')
-  });
-
-  Client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'general');
-    if (!channel) return;
-    channel.send(`Hey ${member}! Welcome to the server 😍`);
-  });
+// deleted cause error
 
  // - Creator Command - \\
  if(command === "creator") {
