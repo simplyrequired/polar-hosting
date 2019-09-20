@@ -1,80 +1,73 @@
-
-// - Discord Packages - \\
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const Client = new Discord.Client();
-
-
-
-// - Bot settings - \\
 const Prefix = ';';
-const Status = 'Online';
-const Username = 'Special operations Bot'
-
 
 // - Role Config - \\
-const CreatorRole = "[BC] Bot Creator";
-const ServerOwnerRole = "[C] Commandant";
-
-const HRRole = "[H] Highranks";
-const DevRole = "[DT] Development Team";
-const Nitro = "Discord Nitro Booster";
-
-
-// - Creator Config - \\
+const CreatorRole = "Polar Bot";
+const HRRole = "SHR";
+const DevRole = "SHR";
 const Creator = 'Simply_Required';
-const ServerOwner = 'ww2kidStudios';
+const ServerName = 'Polar Airlines'
+
+Client.on('ready', ()=> {
+    console.log(`Logged in with username: ${Client.user.username}`)
+    
 
 
-// - Server Settings - \\
-const ServerPermLink = 'https://discord.gg/FjMbvQE';
-const ServerName = 'Special Operations Unit'
+Client.on('guildMemberAdd', member => {
+        const channel = member.guild.channels.find(ch => ch.name === 'general');
+        if (!channel) return;
+        channel.send(`Welcome to the server, ${member}`);
+      });
+
+Client.on('guildMemberRemove', member => {
+        const channel = member.guild.channels.find(ch => ch.name === 'general');
+        if (!channel) return;
+        channel.send(`${member} has left 😔`);
+      });
+})
 
 
 
-// - Commando Settings - \\
-Client.on("ready", () => {
-  console.log(`Bot has started, with ${Client.users.size} users, in ${Client.channels.size} channels of ${Client.guilds.size} guilds.`);
-  console.log(`Logged in as: ${Client.user} BotID: ${Client.user.id}`)
-  console.log(`Joined in ${ServerName} Link: ${ServerPermLink}`)
-  Client.user.setStatus(Status)
-});
 
 
-// - Normal easy Commands - \\
+
+// - Fun Commands - \\ 
 Client.on("message", async message => {
-if(message.author.bot) return;
-  if(message.content.indexOf(Prefix) !== 0) return;
-  const args = message.content.slice(Prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-  
-  // - Welcome Command - \\
-// deleted cause error
+    if(message.author.bot) return;
+      if(message.content.indexOf(Prefix) !== 0) return;
+      const args = message.content.slice(Prefix.length).trim().split(/ +/g);
+      const command = args.shift().toLowerCase();
 
+      if(command === "commandant") {
+            const m = await message.channel.send("Ping?");
+            m.edit(`hes very hot xd`)
+    }
+
+    
  // - Creator Command - \\
  if(command === "creator") {
-  const m = await message.channel.send(`My creator/owner is: ${Creator}.`);
-}
-
-
-
- // - Help Command - \\
- if(command === "help") {
-  const m = await message.channel.send("Need help?");
-  m.edit(`>>> **Command List**\nWelcome to the help-page. Here are all commands listed.\n \n **For everyone**\n \n**${Prefix}help**\n This command gives you a list of all commands.\n**${Prefix}cmds**\nSame as above but with another name for the lazy people.\n**${Prefix}creator**\nThis command gives you information about the creator.\n \n**HR+**\n \n**${Prefix}announce**\nThis command lets you announce to the whole server.\n**${Prefix}hr-announce**\nThis command let's you notify HR's.\n \n**Adminstrative**\n \n**${Prefix}kick**\nKicks the tagged user\n**${Prefix}ban**\nBans the tagged user\n**${Prefix}purge**\nDeletes the amount of messages that is putted in.\n \n **Fun** \n \n**${Prefix}say**\nMakes the bot say something\n**${Prefix}talk**\nMakes the bot say something`)
-}
-
- // - Commands Command - \\
- if(command === "cmds") {
-  const m = await message.channel.send("Need help?");
-  m.edit(`>>> **Command List**\nWelcome to the help-page. Here are all commands listed.\n \n **For everyone**\n \n**${Prefix}help**\n This command gives you a list of all commands.\n**${Prefix}cmds**\nSame as above but with another name for the lazy people.\n**${Prefix}creator**\nThis command gives you information about the creator.\n \n**HR+**\n \n**${Prefix}announce**\nThis command lets you announce to the whole server.\n**${Prefix}hr-announce**\nThis command let's you notify HR's.\n \n**Adminstrative**\n \n**${Prefix}kick**\nKicks the tagged user\n**${Prefix}ban**\nBans the tagged user\n**${Prefix}purge**\nDeletes the amount of messages that is putted in.\n \n **Fun** \n \n**${Prefix}say**\nMakes the bot say something\n**${Prefix}talk**\nMakes the bot say something`)
-}
-
-  // - Ping Command - \\
-  if(command === "ping") {
-    const m = await message.channel.send("Ping?");
-    m.edit(`>>> **Pong!**\n⏱${m.createdTimestamp - message.createdTimestamp}ms\n❤️ ${Math.round(Client.ping)}ms`);
+    const m = await message.channel.send(`My creator/owner is: ${Creator}.`);
   }
+  
+  
+  
+   // - Help Command - \\
+   if(command === "help") {
+    const m = await message.channel.send("Need help?");
+    m.edit(`Nothing much yet!`)
+  }
+ 
+  
+    // - Ping Command - \\
+    if(command === "ping") {
+      const m = await message.channel.send("Ping?");
+      m.edit(`>>> **Pong!**\n⏱${m.createdTimestamp - message.createdTimestamp}ms\n❤️ ${Math.round(Client.ping)}ms`);
+    }
 });
+
+
+
 
 // - Permissions needed+ Commands - \\
 Client.on("message", async message => {
@@ -82,20 +75,6 @@ Client.on("message", async message => {
     if(message.content.indexOf(Prefix) !== 0) return;
     const args = message.content.slice(Prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-
-
-  // - HR-Annouce Command - \\
-if(command === "hr-announce") {
-  if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
-  return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
-  const sayMessage = args.join(" ");
-  message.delete().catch(O_o=>{}); 
-  message.channel.send('Succesfully announced!')
-  const channel = message.guild.channels.find(ch => ch.name === 'hr-announcements');
-  if (!channel) message.channel.send('I could not find the channel!');
-       channel.send(sayMessage);
-
-}
 
   // - Annouce Command - \\
   if(command === "announce") {
@@ -109,6 +88,7 @@ if(command === "hr-announce") {
          channel.send(sayMessage);
   
   }
+
   // - An Usefull trollling command- \\
   if(command === "say") {
     if(!message.member.roles.some(r=>[`${CreatorRole}`, `${DevRole}`].includes(r.name)) )
@@ -124,112 +104,7 @@ if(command === "hr-announce") {
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
   }
-  
-   if(command === "messagefromsimply") {
-    message.channel.send("This message is send from Simply_Required, I know the reason that I cant join the server...Me and com are fixing this\nDon't blame BEST FOR THIS. It's my own fault and now leave it ok bye cya later nubs.");
-  }
-  
-  
-  
-  
-  
-  
-});
-// - Divisions and information Commands - \\
-Client.on("message", async message => {
-  if(message.author.bot) return;
-    if(message.content.indexOf(Prefix) !== 0) return;
-    const args = message.content.slice(Prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
 
-  // - SOUConfig- \\
-const SOUGroup = "[SOU] Special Operations Unit®"
-const SOUGroupLink = "https://www.roblox.com/groups/4339734/SOU-Special-Operations-Unit#!/about"
-const SOUGroupDesc = "We are a military/SWAT themed group"
-const SOUGroupOwner = "ww2kidStudios"
-
-  // - CPTConfig- \\
-  const CPTGroup = "[SOU] Commandant Protection Team"
-  const CPTGroupLink = "https://www.roblox.com/groups/4804783/SOU-Commandant-Protection-Team#!/about"
-  const CPTGroupDesc = "None"
-  const CPTGroupOwner = "ww2kidStudios"
-
-  // - MRUConfig- \\
-  const MRUGroup = "[SOU] Medical Response Unit"
-  const MRUGroupLink = "https://www.roblox.com/groups/4959159/SOU-Medical-Response-Unit#!/about"
-  const MRUGroupDesc = "None"
-  const MRUGroupOwner = "NewNullthemaster1234"
-
-  // - TPUConfig- \\
-  const TPUGroup = "[SOU] Tactical Protection Unit"
-  const TPUGroupLink = "https://www.roblox.com/groups/5077868/SOU-Tactical-Protection-Unit#!/about"
-  const TPUGroupDesc = "None"
-  const TPUGroupOwner = "SilentGhosty"
-
-  // - IAConfig- \\
-  const IAGroup = "[SOU] Intelligence Agency"
-  const IAGroupLink = "https://www.roblox.com/groups/4821426/SOU-Intelligence-Agency#!/about"
-  const IAGroupDesc = "Sending requests to join the group or asking for it will result in a blacklist without excuses."
-  const IAGroupOwner = "[DATA EXPUNGED]"
-
-  // - BPConfig- \\
-  const BPGroup = "[SOU] Base Police"
-  const BPGroupLink = "https://www.roblox.com/groups/4782324/SOU-Base-Police#!/about"
-  const BPGroupDesc = "None"
-  const BPGroupOwner = "Kly_zo"
-
-  // - ESATConfig- \\
-  const ESATGroup = "[E-S-A-T] Elite Stealth Analysis Team"
-  const ESATGroupLink = "https://www.roblox.com/groups/4555118/E-S-A-T-Elite-Stealth-Analysis-Team#!/about"
-  const ESATGroupDesc = "We are division of the SOU."
-  const ESATGroupOwner = "Page cannot be found or no longer exists"
-
-  if(command === "divisions") {
-    const m = await message.channel.send("Alright.");
-    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
-  }
-
-  if(command === "divs") {
-    const m = await message.channel.send("Alright.");
-    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
-  }
-    if(command === "div") {
-    const m = await message.channel.send("Alright.");
-    m.channel.send(`>>> **All current Divisions**\n \n${CPTGroup}\n${BPGroup}\n${TPUGroup}\n${IAGroup}\n${MRUGroup}\n${ESATGroup}`);
-  }
-    if(command === "sou") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${SOUGroup}**\n${SOUGroupDesc}\nOwned by: ${SOUGroupOwner}\nLink: ${SOUGroupLink}`);
-    }
-
-    if(command === "cpt") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${CPTGroup}**\n${CPTGroupDesc}\nOwned by: ${CPTGroupOwner}\nLink: ${CPTGroupLink}`);
-    }
-
-    if(command === "bp") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${BPGroup}**\n${BPGroupDesc}\nOwned by: ${BPGroupOwner}\nLink: ${BPGroupLink}`);
-    }
-
-    if(command === "esat") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${ESATGroup}**\n${ESATGroupDesc}\nOwned by: ${ESATGroupOwner}\nLink: ${ESATGroupLink}`);
-    }
-
-    if(command === "mru") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${MRUGroup}**\n${MRUGroupDesc}\nOwned by: ${MRUGroupOwner}\nLink: ${MRUGroupLink}`);
-    }
-
-    if(command === "ia") {
-      const m = await message.channel.send("Alright.!");
-      m.channel.send(`>>> **${IAGroup}**\n${IAGroupDesc}\nOwned by: ${IAGroupOwner}\nLink: ${IAGroupLink}`);
-    }
-    if(command === "tpu") {
-      const m = await message.channel.send("Alright.");
-      m.channel.send(`>>> **${TPUGroup}**\n${TPUGroupDesc}\nOwned by: ${TPUGroupOwner}\nLink: ${TPUGroupLink}`);
-    }
 });
 
 // - Adminstrative Commands - \\
@@ -257,7 +132,7 @@ if(command === "purge") {
   
   const fetched = await message.channel.fetchMessages({limit: deleteCount});
   message.channel.bulkDelete(fetched)
-    .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+    .catch(error => message.reply(`${error}`));
 }
 
 });
