@@ -82,13 +82,56 @@ Client.on("message", async message => {
     return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    message.channel.send('Succesfully announced!')
-    const channel = message.guild.channels.find(ch => ch.name === 'announcements');
+    const channel = message.guild.channels.find(ch => ch.name === 'announcements ');
   if (!channel) message.channel.send('I could not find the channel!');
          channel.send(sayMessage);
+          message.channel.send('Succesfully announced!')
   
   }
-
+      if(command === "flight-announce") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'flight-announcements');
+  if (!channel) message.channel.send('I could not find the channel!');
+         channel.send(sayMessage);
+              message.channel.send('Succesfully announced!')
+  
+  }
+      if(command === "dev-announce") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'development-announcements');
+  if (!channel) message.channel.send('I could not find the channel!');
+         channel.send(sayMessage);
+              message.channel.send('Succesfully announced!')
+  
+  }
+          if(command === "event") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'events');
+  if (!channel) message.channel.send('I could not find the channel!');
+         channel.send(sayMessage);
+                  message.channel.send('Succesfully announced!')
+  
+  }
+              if(command === "staff-announce") {
+    if(!message.member.roles.some(r=>[`${CreatorRole}`, `${HRRole}`].includes(r.name)) )
+    return message.channel.send(`Hey! ${message.author}, This command is only for HR+ only. Are you HR+?\nAsk to update your roles.`);
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    const channel = message.guild.channels.find(ch => ch.name === 'staff-announcements');
+  if (!channel) message.channel.send('I could not find the channel!');
+         channel.send(sayMessage);
+                      message.channel.send('Succesfully announced!')
+  
+  }
   // - An Usefull trollling command- \\
   if(command === "say") {
     if(!message.member.roles.some(r=>[`${CreatorRole}`, `${DevRole}`].includes(r.name)) )
