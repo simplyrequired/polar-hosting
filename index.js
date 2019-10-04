@@ -1,6 +1,5 @@
 // - Discord Packages - \\
 const Discord = require("discord.js");
-const roblox = require("noblox.js");
 const Client = new Discord.Client();
 
 // - Bot settings - \\
